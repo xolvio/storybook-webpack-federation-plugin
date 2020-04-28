@@ -63,12 +63,12 @@ module.exports = {
 ```
 
 Next we'll import the Storybook Webpack Federation Plugin:
-```
+```javascript
 const {StorybookWebpackFederationPlugin} = require("storybook-webpack-federation-plugin")
 ```
 
 Add a new endpoint as an `output` of Storybook:
-```
+```javascript
   output: {
     // location of where the compiled Storybook lives
     path: path.resolve(__dirname, "storybook-static/federation"),
@@ -78,7 +78,7 @@ Add a new endpoint as an `output` of Storybook:
 ```
 
 And finally configure the plugin itself in the `plugins` section:
-```
+```javascript
 plugins: [
     new StorybookWebpackFederationPlugin({
       name: "xolvio-ui", // this will be used by the consuming federation host
