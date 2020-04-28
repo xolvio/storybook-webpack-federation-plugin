@@ -184,13 +184,27 @@ Below you can find a description of the fields in the configuration for this plu
 
 ```javascript
 {
+  // The name that the consumers will reference as the remote
   name: "xolvio-ui",
+  
   files: {
-    paths: ["./src/components/**/*.ts{,x}"], // an array of globs to match your component files
-    storiesExtension: ".stories.", // files with .stories. will get ignored, so they don't get exposed on the endpoints
-    removePrefix: "./src/", // so your App can import "xolvio-ui/components/Title" instead of  "xolvio-ui/src/components/Title"
+  
+    // an array of globs to match your component files
+    paths: ["./src/components/**/*.ts{,x}"], 
+    
+    // files with .stories. will get ignored, so they don't get exposed on the endpoints
+    storiesExtension: ".stories.",
+    
+     // so your App can import "xolvio-ui/components/Title" instead of  "xolvio-ui/src/components/Title"
+    removePrefix: "./src/",
+    
   },
-  shared: ["styled-components"], // by default we share react and react-dom, you can add any aditional packages you would want to be shared
-  remotes: ["first-remote", "second-remote"] // you can import modules from other federated remotes into your Storybook as well!
+  
+  // by default we share react and react-dom, you can add any aditional packages you would want to be shared
+  shared: ["styled-components"], 
+  
+  // you can import modules from other federated remotes into your Storybook as well!
+  remotes: ["first-remote", "second-remote"]
+  
 }
 ```
