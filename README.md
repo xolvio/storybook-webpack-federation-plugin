@@ -1,0 +1,1 @@
+# Storybook webpack federation plugin

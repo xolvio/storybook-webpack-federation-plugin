@@ -1,0 +1,15 @@
+{
+  "extends": [
+    "airbnb-base",
+    "eslint:recommended",
+    "plugin:prettier/recommended"
+  ],
+  "plugins": [ "prettier"],
+  "rules": {
+    "import/no-extraneous-dependencies": ["error", {"devDependencies": ["**/*.spec.js"]}],
+    "prettier/prettier": "error"
+  },
+  "env": {
+    "jest": true
+  }
+}
