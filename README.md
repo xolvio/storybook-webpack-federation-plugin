@@ -205,6 +205,5 @@ Below you can find a description of the fields in the configuration for this plu
   
   // you can import modules from other federated remotes into your Storybook as well!
   remotes: ["first-remote", "second-remote"]
-  
 }
 ```
