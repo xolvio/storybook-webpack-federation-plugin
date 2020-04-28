@@ -23,7 +23,7 @@ First we need to install the latest Webpack5 directly from Github:
 yarn add webpack@"git://github.com/webpack/webpack.git#dev-1" webpack-cli -D
 ```
 
-Storybook has its own webpack configuration that you can normally extend, but we can't do that yet so we have to create a new `webpack.config.js` speficif for WP5. Here's an example confiugration which you might want to customize based on your setup.
+Storybook has its own webpack configuration that you can normally extend, but we can't do that yet so we have to create a new `webpack.config.js` specific for WP5. Here's an example confiugration which you might want to customize based on your setup.
 
 ```javascript
 const path = require("path");
