@@ -179,6 +179,42 @@ And that's all there is to it! Enjoy :)
 
 We'll come back and update the docs to make this even easier once Storybook is using Webpack 5.
 
+## Do I need this plugin?
+
+We wanted to have the configuration focus on the essentials and to use globs for exposing multiple modules instead of listing them one by one, which is error prone and boring.
+
+So this is how you would do it if you wanted to use Webpack Federation without our plugin:
+
+```javascript
+new ModuleFederationPlugin({
+  name: "xolvio-ui",
+  library: { type: "var", name: "xolvio-ui" },
+  filename: "remoteEntry.js",
+  exposes: {
+    CenteredContentWrapper: "./src/helpers/CenteredContentWrapper.tsx",
+    Title: "./src/components/Title.tsx",
+    Background: "./src/elements/Background.tsx",
+    Sections: "./src/components/Sections.tsx",
+    ScreenIcon: "./src/components/icons/ScreenIcon.tsx",
+    FlipchartIcon: "./src/components/icons/FlipchartIcon.tsx",
+    ShapesIcon: "./src/components/icons/ShapesIcon.tsx",
+    (..)
+  },
+  shared: ["react", "react-dom"],
+})
+```
+
+And here's with our plugin:
+
+```javascript
+new StorybookWebpackFederationPlugin({
+   name: "xolvio-ui", 
+   files: {
+        paths: ["./src/**/*.ts{,x}"]
+   },
+}),
+```
+
 ## API
 Below you can find a description of the fields in the configuration for this plugin:
 
