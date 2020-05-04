@@ -73,7 +73,7 @@ Add a new endpoint as an `output` of Storybook:
     // location of where the compiled Storybook lives
     path: path.resolve(__dirname, "storybook-static/federation"),
     // the url where Storybook will be accessible from
-    publicPath: "https://lab.xolv.io/federated-design-system/xolvio-ui",
+    publicPath: "https://lab.xolv.io/federated-design-system/xolvio-ui/federation",
   },
 ```
 
@@ -81,7 +81,7 @@ And finally configure the plugin itself in the `plugins` section:
 ```javascript
 plugins: [
     new StorybookWebpackFederationPlugin({
-      name: "xolvio-ui", // this will be used by the consuming federation host
+      name: "xolvio_ui", // this will be used by the consuming federation host
       files: { // paths to the components
         paths: ["./src/**/*.ts{,x}"],
       },
@@ -130,7 +130,7 @@ Use it in the plugins section:
 ```javascript
   plugins: [
     new StorybookWebpackFederationPlugin({
-      remotes: ["xolvio-ui"],
+      remotes: ["xolvio_ui"],
     }),
   ],
 ```
@@ -145,9 +145,9 @@ Finally, we add the Storybook endpoint that we exposed above in the app's `index
 And now you can start using components from your published Storybook!
 
 ```javascript
-import { Background } from "xolvio-ui/elements/Background";
-import { Title } from "xolvio-ui/components/Title";
-import { CenteredContentWrapper } from "xolvio-ui/helpers/CenteredContentWrapper";
+import { Background } from "xolvio_ui/elements/Background";
+import { Title } from "xolvio_ui/components/Title";
+import { CenteredContentWrapper } from "xolvio_ui/helpers/CenteredContentWrapper";
 
 export const Services = () => (
   <CenteredContentWrapper>
@@ -161,9 +161,9 @@ export const Services = () => (
 You can also use lazy loading:
 
 ```javascript
-const CenteredContentWrapper = React.lazy(() => import("xolvio-ui/CenteredContentWrapper"));
-const Background = React.lazy(() => import("xolvio-ui/Background"));
-const Title = React.lazy(() => import("xolvio-ui/Title"));
+const CenteredContentWrapper = React.lazy(() => import("xolvio_ui/CenteredContentWrapper"));
+const Background = React.lazy(() => import("xolvio_ui/Background"));
+const Title = React.lazy(() => import("xolvio_ui/Title"));
 
 export const Services = () => (
     <React.Suspense fallback={"Loading Components from the Design System"}>
@@ -187,8 +187,8 @@ So this is how you would do it if you wanted to use Webpack Federation without o
 
 ```javascript
 new ModuleFederationPlugin({
-  name: "xolvio-ui",
-  library: { type: "var", name: "xolvio-ui" },
+  name: "xolvio_ui",
+  library: { type: "var", name: "xolvio_ui" },
   filename: "remoteEntry.js",
   exposes: {
     CenteredContentWrapper: "./src/helpers/CenteredContentWrapper.tsx",
@@ -208,11 +208,11 @@ And here's with our plugin:
 
 ```javascript
 new StorybookWebpackFederationPlugin({
-   name: "xolvio-ui", 
+   name: "xolvio_ui", 
    files: {
         paths: ["./src/**/*.ts{,x}"]
    },
-}),
+})
 ```
 
 ## API
@@ -221,7 +221,7 @@ Below you can find a description of the fields in the configuration for this plu
 ```javascript
 {
   // The name that the consumers will reference as the remote
-  name: "xolvio-ui",
+  name: "xolvio_ui",
   
   files: {
   
@@ -231,7 +231,7 @@ Below you can find a description of the fields in the configuration for this plu
     // files with .stories. will get ignored, so they don't get exposed on the endpoints
     storiesExtension: ".stories.",
     
-     // so your App can import "xolvio-ui/components/Title" instead of  "xolvio-ui/src/components/Title"
+     // so your App can import "xolvio_ui/components/Title" instead of  "xolvio_ui/src/components/Title"
     removePrefix: "./src/",
     
   },

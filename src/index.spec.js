@@ -135,7 +135,7 @@ const { returnStorybookConfig } = require("./index");
 test("returnStorybookConfig works", () => {
   expect(
     returnStorybookConfig({
-      name: "xolvio-ui",
+      name: "xolvio_ui",
       files: {
         paths: globs,
         storiesExtension: ".stories",
@@ -144,8 +144,8 @@ test("returnStorybookConfig works", () => {
       shared: ["styled-components"],
     })
   ).toEqual({
-    name: "xolvio-ui",
-    library: { type: "var", name: "xolvio-ui" },
+    name: "xolvio_ui",
+    library: { type: "var", name: "xolvio_ui" },
     filename: "remoteEntry.js",
     exposes: {
       "components/icons/FlipchartIcon":
@@ -170,7 +170,7 @@ test("returnAppConfig works", () => {
   expect(
     returnAppConfig({
       name: "app",
-      remotes: ["xolvio-ui"],
+      remotes: ["xolvio_ui"],
       shared: ["styled-components"],
     })
   ).toEqual({
@@ -178,7 +178,7 @@ test("returnAppConfig works", () => {
     library: { type: "var", name: "app" },
     filename: "remoteEntry.js",
     remotes: {
-      "xolvio-ui": "xolvio-ui",
+      "xolvio_ui": "xolvio_ui",
     },
     shared: ["react", "react-dom", "styled-components"],
   });
@@ -188,14 +188,14 @@ test("returnAppConfig works if nothing extra shared", () => {
   expect(
     returnAppConfig({
       name: "myApp",
-      remotes: ["xolvio-ui"],
+      remotes: ["xolvio_ui"],
     })
   ).toEqual({
     name: "myApp",
     library: { type: "var", name: "myApp" },
     filename: "remoteEntry.js",
     remotes: {
-      "xolvio-ui": "xolvio-ui",
+      "xolvio_ui": "xolvio_ui",
     },
     shared: ["react", "react-dom"],
   });
@@ -204,14 +204,14 @@ test("returnAppConfig works if nothing extra shared", () => {
 test("returnAppConfig works if no name", () => {
   expect(
     returnAppConfig({
-      remotes: ["xolvio-ui"],
+      remotes: ["xolvio_ui"],
     })
   ).toEqual({
     name: "app",
     library: { type: "var", name: "app" },
     filename: "remoteEntry.js",
     remotes: {
-      "xolvio-ui": "xolvio-ui",
+      "xolvio_ui": "xolvio_ui",
     },
     shared: ["react", "react-dom"],
   });
@@ -220,8 +220,8 @@ test("returnAppConfig works if no name", () => {
 const { returnRemotes } = require("./index");
 
 test("it parses an array and returns an remotes object", () => {
-  expect(returnRemotes(["xolvio-ui", "someOther"])).toEqual({
-    "xolvio-ui": "xolvio-ui",
+  expect(returnRemotes(["xolvio_ui", "someOther"])).toEqual({
+    "xolvio_ui": "xolvio_ui",
     someOther: "someOther",
   });
 });
@@ -230,7 +230,7 @@ const { StorybookWebpackFederationPlugin } = require("./index");
 
 test("it returns the app config through ModuleFederationPlugin if remotes are specified", () => {
   new StorybookWebpackFederationPlugin({
-    remotes: ["xolvio-ui"],
+    remotes: ["xolvio_ui"],
   });
   td.verify(
     ModuleFederationPlugin({
@@ -238,7 +238,7 @@ test("it returns the app config through ModuleFederationPlugin if remotes are sp
       library: { type: "var", name: "app" },
       filename: "remoteEntry.js",
       remotes: {
-        "xolvio-ui": "xolvio-ui",
+        "xolvio_ui": "xolvio_ui",
       },
       shared: ["react", "react-dom"],
     })
@@ -247,7 +247,7 @@ test("it returns the app config through ModuleFederationPlugin if remotes are sp
 
 test("it returns the storybook config through ModuleFederationPlugin if files are specified", () => {
   new StorybookWebpackFederationPlugin({
-    name: "xolvio-ui",
+    name: "xolvio_ui",
     files: {
       paths: globs,
       storiesExtension: ".stories",
@@ -257,8 +257,8 @@ test("it returns the storybook config through ModuleFederationPlugin if files ar
   });
   td.verify(
     ModuleFederationPlugin({
-      name: "xolvio-ui",
-      library: { type: "var", name: "xolvio-ui" },
+      name: "xolvio_ui",
+      library: { type: "var", name: "xolvio_ui" },
       filename: "remoteEntry.js",
       exposes: {
         "components/icons/FlipchartIcon":
@@ -280,22 +280,22 @@ test("it returns the storybook config through ModuleFederationPlugin if files ar
 
 test("it returns the config with remotes and exposes if files and remotes are specified", () => {
   new StorybookWebpackFederationPlugin({
-    name: "xolvio-ui",
+    name: "xolvio_ui",
     files: {
       paths: globs,
       storiesExtension: ".stories",
       removePrefix: "./src/",
     },
-    remotes: ["xolvio-ui"],
+    remotes: ["xolvio_ui"],
     shared: ["styled-components"],
   });
   td.verify(
     ModuleFederationPlugin({
-      name: "xolvio-ui",
-      library: { type: "var", name: "xolvio-ui" },
+      name: "xolvio_ui",
+      library: { type: "var", name: "xolvio_ui" },
       filename: "remoteEntry.js",
       remotes: {
-        "xolvio-ui": "xolvio-ui",
+        "xolvio_ui": "xolvio_ui",
       },
       exposes: {
         "components/icons/FlipchartIcon":
@@ -317,15 +317,15 @@ test("it returns the config with remotes and exposes if files and remotes are sp
 
 test("it returns the simple config for storybook if only names and files are passed", () => {
   new StorybookWebpackFederationPlugin({
-    name: "xolvio-ui",
+    name: "xolvio_ui",
     files: {
       paths: globs,
     },
   });
   td.verify(
     ModuleFederationPlugin({
-      name: "xolvio-ui",
-      library: { type: "var", name: "xolvio-ui" },
+      name: "xolvio_ui",
+      library: { type: "var", name: "xolvio_ui" },
       filename: "remoteEntry.js",
       exposes: {
         "components/icons/FlipchartIcon":
@@ -347,13 +347,13 @@ test("it returns the simple config for storybook if only names and files are pas
 
 test.skip("it returns the simple config for storybook if only names and files are passed", () => {
   new StorybookWebpackFederationPlugin({
-    name: "xolvio-ui",
+    name: "xolvio_ui",
     files: globs,
   });
   td.verify(
     ModuleFederationPlugin({
-      name: "xolvio-ui",
-      library: { type: "var", name: "xolvio-ui" },
+      name: "xolvio_ui",
+      library: { type: "var", name: "xolvio_ui" },
       filename: "remoteEntry.js",
       exposes: {
         "components/icons/FlipchartIcon":
