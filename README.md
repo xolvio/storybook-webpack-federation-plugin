@@ -108,10 +108,10 @@ For convenience you'll probably want to set npm scripts for building your storyb
 }
 ```
 
-Let's now build it:
+Let's now build and serve it:
 
 ```bash
-yarn build
+yarn build && yarn serve
 ```
 
 And that's all for the Storybook side!
