@@ -79,7 +79,7 @@ Add a new endpoint as an `output` of Storybook:
     // location of where the compiled Storybook lives
     path: path.resolve(__dirname, "storybook-static/federation"),
     // the url where Storybook will be accessible from
-    publicPath: "https://lab.xolv.io/federated-design-system/xolvio-ui/federation",
+    publicPath: "//localhost:3030/federation/",
   },
 ```
 
@@ -151,7 +151,7 @@ Let's add the Storybook endpoint that we exposed above in the app's `index.html`
 
 ```html
 <head>
-  <script src="https://lab.xolv.io/federated-design-system/xolvio-ui/federation/remoteEntry.js"></script>
+  <script src="http://localhost:3030/federation/remoteEntry.js"></script>
 </head>
 ```
 
