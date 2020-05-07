@@ -1,9 +1,9 @@
 
-![Cover image](/webpack-federation.png "Cover image")
-
 # Storybook Webpack Federation Plugin
 
 Exposes all the components in your Storybook as Webpack 5 federated components.
+
+![Cover image](/webpack-federation.png "Cover image")
 
 ## Motivation
 
