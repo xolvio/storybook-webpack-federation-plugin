@@ -100,10 +100,11 @@ For convenience you'll probably want to set npm scripts for building your storyb
 
 ```json
 "scripts": {
-  "start": "start-storybook",
-  "build": "yarn build:storybook && yarn build:federation",
-  "build:federation": "rm -rf storybook-static/federation && webpack --mode production",
-  "build:storybook": "build-storybook"
+    "start": "start-storybook -p 9009 -s public,assets",
+    "build": "yarn build:storybook && yarn build:federation",
+    "build:federation": "rm -rf storybook-static/federation && webpack --mode production",
+    "serve": "http-server ./storybook-static -p 3030 --cors",
+    "build:storybook": "build-storybook -s public,assets"
 }
 ```
 
