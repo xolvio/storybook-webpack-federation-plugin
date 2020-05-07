@@ -7,6 +7,7 @@ Exposes all the components in your Storybook as Webpack 5 federated components.
 Design systems are all the fad these days, and we wanted to create an easy way to share them. Since Storybook has proven to be a great way do that, we figured why not also make the source of truth for the current state of components also be the place where you use them?
 
 [Check out the article we wrote about it here.]() (coming very soon)
+[Here is the exmaple repo that you can use to follow along](https://github.com/xolvio/webpack-federation-storybook-design-systems-demo)
 
 ## Installation
 
