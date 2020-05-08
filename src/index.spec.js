@@ -48,21 +48,6 @@ test("returnPaths returns the compiled paths without stories", () => {
 
 const { prepareExposesObject } = require("./index");
 
-console.log(
-  prepareExposesObject([
-    "./src/components/icons/FlipchartIcon.tsx",
-    "./src/components/icons/ScreenIcon.tsx",
-    "./src/components/icons/ShapesIcon.tsx",
-    "./src/components/Sections.tsx",
-    "./src/components/Title.tsx",
-    "./src/elements/Background.tsx",
-    "./src/elements/ButtonPrimary.tsx",
-    "./src/elements/Confetti7Rows.tsx",
-    "./src/elements/InlineButton.ts",
-    "./src/elements/typography.tsx",
-  ])
-);
-
 test("prepareExposesObject works for a single path", () => {
   expect(
     prepareExposesObject(["./src/components/icons/FlipchartIcon.tsx"])
@@ -178,7 +163,7 @@ test("returnAppConfig works", () => {
     library: { type: "var", name: "app" },
     filename: "remoteEntry.js",
     remotes: {
-      "xolvio_ui": "xolvio_ui",
+      xolvio_ui: "xolvio_ui",
     },
     shared: ["react", "react-dom", "styled-components"],
   });
@@ -195,7 +180,7 @@ test("returnAppConfig works if nothing extra shared", () => {
     library: { type: "var", name: "myApp" },
     filename: "remoteEntry.js",
     remotes: {
-      "xolvio_ui": "xolvio_ui",
+      xolvio_ui: "xolvio_ui",
     },
     shared: ["react", "react-dom"],
   });
@@ -211,7 +196,7 @@ test("returnAppConfig works if no name", () => {
     library: { type: "var", name: "app" },
     filename: "remoteEntry.js",
     remotes: {
-      "xolvio_ui": "xolvio_ui",
+      xolvio_ui: "xolvio_ui",
     },
     shared: ["react", "react-dom"],
   });
@@ -221,7 +206,7 @@ const { returnRemotes } = require("./index");
 
 test("it parses an array and returns an remotes object", () => {
   expect(returnRemotes(["xolvio_ui", "someOther"])).toEqual({
-    "xolvio_ui": "xolvio_ui",
+    xolvio_ui: "xolvio_ui",
     someOther: "someOther",
   });
 });
@@ -238,7 +223,7 @@ test("it returns the app config through ModuleFederationPlugin if remotes are sp
       library: { type: "var", name: "app" },
       filename: "remoteEntry.js",
       remotes: {
-        "xolvio_ui": "xolvio_ui",
+        xolvio_ui: "xolvio_ui",
       },
       shared: ["react", "react-dom"],
     })
@@ -295,7 +280,7 @@ test("it returns the config with remotes and exposes if files and remotes are sp
       library: { type: "var", name: "xolvio_ui" },
       filename: "remoteEntry.js",
       remotes: {
-        "xolvio_ui": "xolvio_ui",
+        xolvio_ui: "xolvio_ui",
       },
       exposes: {
         "components/icons/FlipchartIcon":
