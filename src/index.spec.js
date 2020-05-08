@@ -130,6 +130,15 @@ test("return shared compiles the defaults with the passed items", () => {
   ]);
 });
 
+test("return shared compiles the defaults with the passed items and dedupes", () => {
+  expect(returnShared(["react", "react-dom", "styled-components", "modifyjs"])).toEqual([
+    "react",
+    "react-dom",
+    "styled-components",
+    "modifyjs",
+  ]);
+});
+
 const { returnStorybookConfig } = require("./index");
 
 test("returnStorybookConfig works", () => {
