@@ -5,6 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "lint": "npx eslint \"**/*.js\"",
+    "release": "npx semantic-release",
     "test": "npx jest"
   },
   "repository": {
@@ -30,6 +31,7 @@
     "jest": "^25.4.0",
     "lint-staged": "^10.2.2",
     "prettier": "^2.0.5",
+    "semantic-release": "^17.0.7",
     "testdouble": "^3.13.1",
     "testdouble-jest": "^2.0.0",
     "webpack": "git://github.com/webpack/webpack.git#dev-1"
