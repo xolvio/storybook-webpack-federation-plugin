@@ -53,7 +53,6 @@ test("returnPaths returns the compiled paths without stories using RegExp", () =
     "./src/components/icons/ShapesIcon.tsx",
     "./src/components/Sections.tsx",
     "./src/components/Title.tsx",
-    "./src/components/Button/index.tsx",
     "./src/elements/Background.tsx",
     "./src/elements/ButtonPrimary.tsx",
     "./src/elements/Confetti7Rows.tsx",
