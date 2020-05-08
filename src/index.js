@@ -32,7 +32,7 @@ const prepareExposesObject = (paths, removePrefix = "./src/") => {
 };
 
 const returnShared = (extraToShare = []) => {
-  return ["react", "react-dom", ...extraToShare];
+  return [...new Set(["react", "react-dom", ...extraToShare])];
 };
 
 const returnRemotes = (remotes) =>
