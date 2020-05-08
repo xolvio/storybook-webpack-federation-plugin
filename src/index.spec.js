@@ -55,6 +55,7 @@ console.log(
     "./src/components/icons/ShapesIcon.tsx",
     "./src/components/Sections.tsx",
     "./src/components/Title.tsx",
+    "./src/components/Button/index.tsx",
     "./src/elements/Background.tsx",
     "./src/elements/ButtonPrimary.tsx",
     "./src/elements/Confetti7Rows.tsx",
@@ -111,6 +112,16 @@ test("prepareExposesObject works with different path prefix", () => {
   ).toEqual({
     exposes: {
       "elements/Confetti7Rows": "./lib/elements/Confetti7Rows.ts",
+    },
+  });
+});
+
+test("prepareExposesObject removes index from the path", () => {
+  expect(
+    prepareExposesObject(["./src/components/Button/index.tsx"])
+  ).toEqual({
+    exposes: {
+      "components/Button": "./src/components/Button/index.tsx",
     },
   });
 });

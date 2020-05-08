@@ -21,7 +21,8 @@ const prepareExposesObject = (paths, removePrefix = "./src/") => {
               ...previousValue.exposes,
               [currentValue
                 .replace(removePrefix, "")
-                .replace(extension, "")]: currentValue,
+                .replace(extension, "")
+                .replace(/\/index$/, "")]: currentValue,
             },
           };
         },
