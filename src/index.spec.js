@@ -115,6 +115,12 @@ test("prepareExposesObject works with different path prefix", () => {
   });
 });
 
+const { prepareName } = require("./index")
+
+test('replaces all - with  _ in the name', () => {
+  expect(prepareName('foo-bar_fizz-buzz')).toEqual('foo_bar_fizz_buzz')
+})
+
 const { returnShared } = require("./index");
 
 test("return shared returns react and react-dom by default", () => {

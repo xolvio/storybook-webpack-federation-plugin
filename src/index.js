@@ -42,14 +42,16 @@ const returnRemotes = (remotes) =>
 const prepareRemotesObject = (remotes) =>
   remotes.length > 0 ? { remotes: returnRemotes(remotes) } : {};
 
+const prepareName = (name) => name.replace(/-/g, "_");
+
 const returnStorybookConfig = ({
   name = "app",
   files = {},
   remotes = [],
   shared,
 }) => ({
-  name,
-  library: { type: "var", name },
+  name: prepareName(name),
+  library: { type: "var", name: prepareName(name) },
   filename: "remoteEntry.js",
   shared: returnShared(shared),
   ...prepareExposesObject(
@@ -70,6 +72,7 @@ class StorybookWebpackFederationPlugin {
 module.exports = {
   returnPaths,
   prepareExposesObject,
+  prepareName,
   returnShared,
   returnStorybookConfig,
   returnAppConfig,
