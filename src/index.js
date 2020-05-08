@@ -2,7 +2,7 @@ const glob = require("glob");
 const path = require("path");
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
 
-const returnPaths = (globs = [], storiesExtension = /\.stories\./) => {
+const returnPaths = (globs = [], storiesExtension = /\.?stories\./) => {
   return globs
     .reduce((previousValue, currentValue) => {
       return [...previousValue, ...glob.sync(currentValue)];
