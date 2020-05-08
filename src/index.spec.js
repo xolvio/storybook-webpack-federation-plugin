@@ -46,6 +46,21 @@ test("returnPaths returns the compiled paths without stories", () => {
   ]);
 });
 
+test("returnPaths returns the compiled paths without stories using RegExp", () => {
+  expect(returnPaths(globs, /stories\./)).toEqual([
+    "./src/components/icons/FlipchartIcon.tsx",
+    "./src/components/icons/ScreenIcon.tsx",
+    "./src/components/icons/ShapesIcon.tsx",
+    "./src/components/Sections.tsx",
+    "./src/components/Title.tsx",
+    "./src/elements/Background.tsx",
+    "./src/elements/ButtonPrimary.tsx",
+    "./src/elements/Confetti7Rows.tsx",
+    "./src/elements/InlineButton.ts",
+    "./src/elements/typography.tsx",
+  ]);
+});
+
 const { prepareExposesObject } = require("./index");
 
 test("prepareExposesObject works for a single path", () => {

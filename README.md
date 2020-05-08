@@ -282,8 +282,8 @@ Below you can find a description of the fields in the configuration for this plu
     // an array of globs to match your component files
     paths: ["./src/components/**/*.ts{,x}"],
 
-    // files with .stories. will get ignored, so they don't get exposed on the endpoints
-    storiesExtension: ".stories.",
+    // files with .stories. will get ignored, so they don't get exposed on the endpoints. Can also be a RegExp
+    storiesExtension: ".stories." | /\.stories\.,
 
      // so your App can import "xolvio_ui/components/Title" instead of  "xolvio_ui/src/components/Title"
     removePrefix: "./src/",
