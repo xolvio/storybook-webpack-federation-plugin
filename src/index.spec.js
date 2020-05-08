@@ -345,7 +345,7 @@ test("it returns the simple config for storybook if only names and files are pas
   );
 });
 
-test.skip("it returns the simple config for storybook if only names and files are passed", () => {
+test("it returns the simple config for storybook if only names and files are passed", () => {
   new StorybookWebpackFederationPlugin({
     name: "xolvio_ui",
     files: globs,

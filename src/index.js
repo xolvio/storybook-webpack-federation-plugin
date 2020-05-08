@@ -53,7 +53,10 @@ const returnStorybookConfig = ({
   filename: "remoteEntry.js",
   shared: returnShared(shared),
   ...prepareExposesObject(
-    returnPaths(files.paths, files.storiesExtension),
+    returnPaths(
+      Array.isArray(files) ? files : files.paths,
+      files.storiesExtension
+    ),
     files.removePrefix
   ),
   ...prepareRemotesObject(remotes),
