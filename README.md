@@ -24,10 +24,10 @@ yarn add storybook-webpack-federation-plugin -D
 
 Storybook currently uses Webpack 4, which means we have to do a few extra steps to install Webpack 5 as that's where federation has been added. Once Storybook starts using Webpack 5 we won't need to do these steps.
 
-First we need to install the latest Webpack5 directly from Github:
+First we need to install the latest Beta of Webpack5:
 
 ```bash
-yarn add webpack@"git://github.com/webpack/webpack.git#dev-1" webpack-cli -D
+yarn add webpack@v5.0.0-beta.16 webpack-cli -D
 ```
 
 Storybook has its own webpack configuration that you can normally extend, but we can't do that yet so we have to create a new `webpack.config.js` specific for WP5. Here's an example configuration which you might want to customize based on your setup.
@@ -131,7 +131,7 @@ yarn add storybook-webpack-federation-plugin -D
 We need to make sure we are using the beta version of Webpack 5 here as well:
 
 ```bash
-yarn add webpack@"git://github.com/webpack/webpack.git#dev-1" -D
+yarn add webpack@v5.0.0-beta.16 -D
 ```
 
 Go to your `webpack.config.js` and require the plugin at the top as before:
