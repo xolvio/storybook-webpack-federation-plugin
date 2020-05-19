@@ -160,39 +160,6 @@ Let's add the Storybook endpoint that we exposed above in the app's `index.html`
 </head>
 ```
 
-There is one remaining change that you have to do, and it is a bit confusing.
-Your entry point has to be a pure js file that uses a dynamic import.
-
-`src/index.js`
-
-```javascript
-import("./bootstrap");
-```
-
-Example `src/bootstrap.tsx`
-
-```typescript jsx
-import * as React from "react";
-import * as ReactDOM from "react-dom";
-import App from "./App";
-
-ReactDOM.render(<App />, document.getElementById("root"));
-```
-
-Make sure your `webpack.config.js` file has the entry set to this new file:
-
-```javascript
-  entry: "./src/index",
-```
-
-Feel free to skip this explanation, and just trust us here. Nonetheless, if you are curious Webpack Federation authors explain it this way:
-
-> As we are sharing code in the current built, we have to provide a promise and Webpack needs to boot.
-> Then the normal Webpack runtime gets emitted, thus it’s going to promptly execute the entry point, subsequently, we have to adjust the impact of that.
-> So a promise is that we can hold up that execution for a moment to let the Webpack runtime interface with any remotes and comprehends what it needs or already has.
-> So the simplest method to do that is to move your normal entry point into bootstrap.js file and afterwards just progressively import that bootstrap.
-> ( https://medium.com/swlh/webpack-5-module-federation-stitching-two-simple-bundles-together-fe4e6a069716 )
-
 And now you can start using components from your published Storybook!
 
 ```javascript
