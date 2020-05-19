@@ -4,8 +4,8 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
-    "lint": "npx eslint \"**/*.js\"",
-    "test": "npx jest"
+    "lint": "eslint \"**/*.js\"",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
