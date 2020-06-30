@@ -20,7 +20,7 @@ const prepareExposesObject = (paths, removePrefix = "./src/") => {
             exposes: {
               ...previousValue.exposes,
               [currentValue
-                .replace(removePrefix, "")
+                .replace(removePrefix, "./")
                 .replace(extension, "")
                 .replace(/\/index$/, "")]: currentValue,
             },

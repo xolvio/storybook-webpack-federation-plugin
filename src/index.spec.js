@@ -68,7 +68,7 @@ test("prepareExposesObject works for a single path", () => {
     prepareExposesObject(["./src/components/icons/FlipchartIcon.tsx"])
   ).toEqual({
     exposes: {
-      "components/icons/FlipchartIcon":
+      "./components/icons/FlipchartIcon":
         "./src/components/icons/FlipchartIcon.tsx",
     },
   });
@@ -82,9 +82,9 @@ test("prepareExposesObject works with two paths", () => {
     ])
   ).toEqual({
     exposes: {
-      "components/icons/FlipchartIcon":
+      "./components/icons/FlipchartIcon":
         "./src/components/icons/FlipchartIcon.tsx",
-      "elements/Confetti7Rows": "./src/elements/Confetti7Rows.tsx",
+      "./elements/Confetti7Rows": "./src/elements/Confetti7Rows.tsx",
     },
   });
 });
@@ -92,7 +92,7 @@ test("prepareExposesObject works with two paths", () => {
 test("prepareExposesObject works with different file extension", () => {
   expect(prepareExposesObject(["./src/elements/Confetti7Rows.ts"])).toEqual({
     exposes: {
-      "elements/Confetti7Rows": "./src/elements/Confetti7Rows.ts",
+      "./elements/Confetti7Rows": "./src/elements/Confetti7Rows.ts",
     },
   });
 });
@@ -100,7 +100,7 @@ test("prepareExposesObject works with different file extension", () => {
 test("prepareExposesObject works with different file extension", () => {
   expect(prepareExposesObject(["./src/elements/Confetti7Rows.ts"])).toEqual({
     exposes: {
-      "elements/Confetti7Rows": "./src/elements/Confetti7Rows.ts",
+      "./elements/Confetti7Rows": "./src/elements/Confetti7Rows.ts",
     },
   });
 });
@@ -110,17 +110,15 @@ test("prepareExposesObject works with different path prefix", () => {
     prepareExposesObject(["./lib/elements/Confetti7Rows.ts"], "./lib/")
   ).toEqual({
     exposes: {
-      "elements/Confetti7Rows": "./lib/elements/Confetti7Rows.ts",
+      "./elements/Confetti7Rows": "./lib/elements/Confetti7Rows.ts",
     },
   });
 });
 
 test("prepareExposesObject removes index from the path", () => {
-  expect(
-    prepareExposesObject(["./src/components/Button/index.tsx"])
-  ).toEqual({
+  expect(prepareExposesObject(["./src/components/Button/index.tsx"])).toEqual({
     exposes: {
-      "components/Button": "./src/components/Button/index.tsx",
+      "./components/Button": "./src/components/Button/index.tsx",
     },
   });
 });
@@ -141,12 +139,9 @@ test("return shared compiles the defaults with the passed items", () => {
 });
 
 test("return shared compiles the defaults with the passed items and dedupes", () => {
-  expect(returnShared(["react", "react-dom", "styled-components", "modifyjs"])).toEqual([
-    "react",
-    "react-dom",
-    "styled-components",
-    "modifyjs",
-  ]);
+  expect(
+    returnShared(["react", "react-dom", "styled-components", "modifyjs"])
+  ).toEqual(["react", "react-dom", "styled-components", "modifyjs"]);
 });
 
 const { returnStorybookConfig } = require("./index");
@@ -167,17 +162,17 @@ test("returnStorybookConfig works", () => {
     library: { type: "var", name: "xolvio_ui" },
     filename: "remoteEntry.js",
     exposes: {
-      "components/icons/FlipchartIcon":
+      "./components/icons/FlipchartIcon":
         "./src/components/icons/FlipchartIcon.tsx",
-      "components/icons/ScreenIcon": "./src/components/icons/ScreenIcon.tsx",
-      "components/icons/ShapesIcon": "./src/components/icons/ShapesIcon.tsx",
-      "components/Sections": "./src/components/Sections.tsx",
-      "components/Title": "./src/components/Title.tsx",
-      "elements/Background": "./src/elements/Background.tsx",
-      "elements/ButtonPrimary": "./src/elements/ButtonPrimary.tsx",
-      "elements/Confetti7Rows": "./src/elements/Confetti7Rows.tsx",
-      "elements/InlineButton": "./src/elements/InlineButton.ts",
-      "elements/typography": "./src/elements/typography.tsx",
+      "./components/icons/ScreenIcon": "./src/components/icons/ScreenIcon.tsx",
+      "./components/icons/ShapesIcon": "./src/components/icons/ShapesIcon.tsx",
+      "./components/Sections": "./src/components/Sections.tsx",
+      "./components/Title": "./src/components/Title.tsx",
+      "./elements/Background": "./src/elements/Background.tsx",
+      "./elements/ButtonPrimary": "./src/elements/ButtonPrimary.tsx",
+      "./elements/Confetti7Rows": "./src/elements/Confetti7Rows.tsx",
+      "./elements/InlineButton": "./src/elements/InlineButton.ts",
+      "./elements/typography": "./src/elements/typography.tsx",
     },
     shared: ["react", "react-dom", "styled-components"],
   });
@@ -280,17 +275,19 @@ test("it returns the storybook config through ModuleFederationPlugin if files ar
       library: { type: "var", name: "xolvio_ui" },
       filename: "remoteEntry.js",
       exposes: {
-        "components/icons/FlipchartIcon":
+        "./components/icons/FlipchartIcon":
           "./src/components/icons/FlipchartIcon.tsx",
-        "components/icons/ScreenIcon": "./src/components/icons/ScreenIcon.tsx",
-        "components/icons/ShapesIcon": "./src/components/icons/ShapesIcon.tsx",
-        "components/Sections": "./src/components/Sections.tsx",
-        "components/Title": "./src/components/Title.tsx",
-        "elements/Background": "./src/elements/Background.tsx",
-        "elements/ButtonPrimary": "./src/elements/ButtonPrimary.tsx",
-        "elements/Confetti7Rows": "./src/elements/Confetti7Rows.tsx",
-        "elements/InlineButton": "./src/elements/InlineButton.ts",
-        "elements/typography": "./src/elements/typography.tsx",
+        "./components/icons/ScreenIcon":
+          "./src/components/icons/ScreenIcon.tsx",
+        "./components/icons/ShapesIcon":
+          "./src/components/icons/ShapesIcon.tsx",
+        "./components/Sections": "./src/components/Sections.tsx",
+        "./components/Title": "./src/components/Title.tsx",
+        "./elements/Background": "./src/elements/Background.tsx",
+        "./elements/ButtonPrimary": "./src/elements/ButtonPrimary.tsx",
+        "./elements/Confetti7Rows": "./src/elements/Confetti7Rows.tsx",
+        "./elements/InlineButton": "./src/elements/InlineButton.ts",
+        "./elements/typography": "./src/elements/typography.tsx",
       },
       shared: ["react", "react-dom", "styled-components"],
     })
@@ -317,17 +314,19 @@ test("it returns the config with remotes and exposes if files and remotes are sp
         xolvio_ui: "xolvio_ui",
       },
       exposes: {
-        "components/icons/FlipchartIcon":
+        "./components/icons/FlipchartIcon":
           "./src/components/icons/FlipchartIcon.tsx",
-        "components/icons/ScreenIcon": "./src/components/icons/ScreenIcon.tsx",
-        "components/icons/ShapesIcon": "./src/components/icons/ShapesIcon.tsx",
-        "components/Sections": "./src/components/Sections.tsx",
-        "components/Title": "./src/components/Title.tsx",
-        "elements/Background": "./src/elements/Background.tsx",
-        "elements/ButtonPrimary": "./src/elements/ButtonPrimary.tsx",
-        "elements/Confetti7Rows": "./src/elements/Confetti7Rows.tsx",
-        "elements/InlineButton": "./src/elements/InlineButton.ts",
-        "elements/typography": "./src/elements/typography.tsx",
+        "./components/icons/ScreenIcon":
+          "./src/components/icons/ScreenIcon.tsx",
+        "./components/icons/ShapesIcon":
+          "./src/components/icons/ShapesIcon.tsx",
+        "./components/Sections": "./src/components/Sections.tsx",
+        "./components/Title": "./src/components/Title.tsx",
+        "./elements/Background": "./src/elements/Background.tsx",
+        "./elements/ButtonPrimary": "./src/elements/ButtonPrimary.tsx",
+        "./elements/Confetti7Rows": "./src/elements/Confetti7Rows.tsx",
+        "./elements/InlineButton": "./src/elements/InlineButton.ts",
+        "./elements/typography": "./src/elements/typography.tsx",
       },
       shared: ["react", "react-dom", "styled-components"],
     })
@@ -347,17 +346,19 @@ test("it returns the simple config for storybook if only names and files are pas
       library: { type: "var", name: "xolvio_ui" },
       filename: "remoteEntry.js",
       exposes: {
-        "components/icons/FlipchartIcon":
+        "./components/icons/FlipchartIcon":
           "./src/components/icons/FlipchartIcon.tsx",
-        "components/icons/ScreenIcon": "./src/components/icons/ScreenIcon.tsx",
-        "components/icons/ShapesIcon": "./src/components/icons/ShapesIcon.tsx",
-        "components/Sections": "./src/components/Sections.tsx",
-        "components/Title": "./src/components/Title.tsx",
-        "elements/Background": "./src/elements/Background.tsx",
-        "elements/ButtonPrimary": "./src/elements/ButtonPrimary.tsx",
-        "elements/Confetti7Rows": "./src/elements/Confetti7Rows.tsx",
-        "elements/InlineButton": "./src/elements/InlineButton.ts",
-        "elements/typography": "./src/elements/typography.tsx",
+        "./components/icons/ScreenIcon":
+          "./src/components/icons/ScreenIcon.tsx",
+        "./components/icons/ShapesIcon":
+          "./src/components/icons/ShapesIcon.tsx",
+        "./components/Sections": "./src/components/Sections.tsx",
+        "./components/Title": "./src/components/Title.tsx",
+        "./elements/Background": "./src/elements/Background.tsx",
+        "./elements/ButtonPrimary": "./src/elements/ButtonPrimary.tsx",
+        "./elements/Confetti7Rows": "./src/elements/Confetti7Rows.tsx",
+        "./elements/InlineButton": "./src/elements/InlineButton.ts",
+        "./elements/typography": "./src/elements/typography.tsx",
       },
       shared: ["react", "react-dom"],
     })
@@ -375,17 +376,19 @@ test("it returns the simple config for storybook if only names and files are pas
       library: { type: "var", name: "xolvio_ui" },
       filename: "remoteEntry.js",
       exposes: {
-        "components/icons/FlipchartIcon":
+        "./components/icons/FlipchartIcon":
           "./src/components/icons/FlipchartIcon.tsx",
-        "components/icons/ScreenIcon": "./src/components/icons/ScreenIcon.tsx",
-        "components/icons/ShapesIcon": "./src/components/icons/ShapesIcon.tsx",
-        "components/Sections": "./src/components/Sections.tsx",
-        "components/Title": "./src/components/Title.tsx",
-        "elements/Background": "./src/elements/Background.tsx",
-        "elements/ButtonPrimary": "./src/elements/ButtonPrimary.tsx",
-        "elements/Confetti7Rows": "./src/elements/Confetti7Rows.tsx",
-        "elements/InlineButton": "./src/elements/InlineButton.ts",
-        "elements/typography": "./src/elements/typography.tsx",
+        "./components/icons/ScreenIcon":
+          "./src/components/icons/ScreenIcon.tsx",
+        "./components/icons/ShapesIcon":
+          "./src/components/icons/ShapesIcon.tsx",
+        "./components/Sections": "./src/components/Sections.tsx",
+        "./components/Title": "./src/components/Title.tsx",
+        "./elements/Background": "./src/elements/Background.tsx",
+        "./elements/ButtonPrimary": "./src/elements/ButtonPrimary.tsx",
+        "./elements/Confetti7Rows": "./src/elements/Confetti7Rows.tsx",
+        "./elements/InlineButton": "./src/elements/InlineButton.ts",
+        "./elements/typography": "./src/elements/typography.tsx",
       },
       shared: ["react", "react-dom"],
     })
